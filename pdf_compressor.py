@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-pdf_shrink.py — 適合畫冊、掃描書與一般 PDF 的瘦身工具（基於 Ghostscript）
+pdf_compressor.py — 適合畫冊、掃描書與一般 PDF 的瘦身工具（基於 Ghostscript）
 
 使用範例：
-  ./pdf_shrink.py book.pdf                       # 預設高畫質收藏 (archive)
-  ./pdf_shrink.py book.pdf -p balanced           # 200 DPI 平衡閱讀版
-  ./pdf_shrink.py book.pdf -p compact            # 150 DPI 極致輕量版
-  ./pdf_shrink.py *.pdf -p balanced              # 批次壓縮多個 PDF
-  ./pdf_shrink.py ./資料夾 -p archive            # 壓縮整個資料夾內的 PDF
-  ./pdf_shrink.py book.pdf --inspect             # 只檢查 PDF 圖片格式與解析度
+  ./pdf_compressor.py book.pdf                       # 預設高畫質收藏 (archive)
+  ./pdf_compressor.py book.pdf -p balanced           # 200 DPI 平衡閱讀版
+  ./pdf_compressor.py book.pdf -p compact            # 150 DPI 極致輕量版
+  ./pdf_compressor.py *.pdf -p balanced              # 批次壓縮多個 PDF
+  ./pdf_compressor.py ./資料夾 -p archive            # 壓縮整個資料夾內的 PDF
+  ./pdf_compressor.py book.pdf --inspect             # 只檢查 PDF 圖片格式與解析度
 """
 
 from __future__ import annotations
@@ -240,7 +240,7 @@ def compress_pdf(
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     fd, tmp_name = tempfile.mkstemp(
-        prefix=".pdf_shrink_", suffix=".pdf", dir=str(output_path.parent)
+        prefix=".pdf_compressor_", suffix=".pdf", dir=str(output_path.parent)
     )
     os.close(fd)
     tmp_path = Path(tmp_name)
@@ -312,7 +312,7 @@ def parse_args() -> argparse.Namespace:
         f"  {k:<10} {v.description}" for k, v in PRESETS.items()
     )
     parser = argparse.ArgumentParser(
-        prog="pdf_shrink.py",
+        prog="pdf_compressor.py",
         description="PDF 智慧瘦身工具（適合畫冊、掃描電子書與大型 PDF）",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=f"預設方案 (--preset):\n{preset_help}",

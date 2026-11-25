@@ -1,4 +1,4 @@
-# pdf-shrink
+# pdf-compressor
 
 適合畫冊、掃描電子書與大型 PDF 的命令列瘦身工具（基於 Ghostscript，純 Python 標準函式庫、無需安裝第三方 Python 套件）。
 
@@ -20,21 +20,21 @@
 
 ```bash
 # 檢查 PDF 頁數、解析度與圖片壓縮格式（不執行壓縮）
-./pdf_shrink.py --inspect book.pdf
+./pdf_compressor.py --inspect book.pdf
 
 # 高畫質收藏模式（預設，保留原解析度，另存新檔不覆蓋原檔）
-./pdf_shrink.py book.pdf
+./pdf_compressor.py book.pdf
 
 # 平衡閱讀版（200 DPI）或極致輕量版（150 DPI）
-./pdf_shrink.py book.pdf -p balanced
-./pdf_shrink.py book.pdf -p compact
+./pdf_compressor.py book.pdf -p balanced
+./pdf_compressor.py book.pdf -p compact
 
 # 批次處理多個 PDF 或整個資料夾
-./pdf_shrink.py *.pdf -p archive
-./pdf_shrink.py ./資料夾路徑 -p balanced
+./pdf_compressor.py *.pdf -p archive
+./pdf_compressor.py ./資料夾路徑 -p balanced
 
 # 自訂 DPI 與 JPEG 品質
-./pdf_shrink.py book.pdf --dpi 250 --qfactor 0.30 -o output.pdf
+./pdf_compressor.py book.pdf --dpi 250 --qfactor 0.30 -o output.pdf
 ```
 
 ## 特色
